@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import "./assets/ProductList.css";
 import CartItem from "./CartItem";
 import { plantsArray } from "./utils/constant";
@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 function ProductList() {
   const [showCart, setShowCart] = useState(false);
-  const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
   const cart = useSelector((state) => state.cart.items);
 
@@ -38,12 +37,11 @@ function ProductList() {
   };
   const handleCartClick = (e) => {
     e.preventDefault();
-    setShowCart(true); // Set showCart to true when cart icon is clicked
+    setShowCart(true);
   };
   const handlePlantsClick = (e) => {
     e.preventDefault();
-    setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-    setShowCart(false); // Hide the cart when navigating to About Us
+    setShowCart(false);
   };
 
   const handleContinueShopping = (e) => {
@@ -55,7 +53,7 @@ function ProductList() {
     dispatch(addItem(product));
     setAddedToCart((prevState) => ({
       ...prevState,
-      [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
+      [product.name]: true,
     }));
   };
 
@@ -71,7 +69,7 @@ function ProductList() {
               src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png"
               alt=""
             />
-            <a href="/" style={{ textDecoration: "none" }}>
+            <a href="/plantshopping" style={{ textDecoration: "none" }}>
               <div>
                 <h3 style={{ color: "white" }}>Paradise Nursery</h3>
                 <i style={{ color: "white" }}>Where Green Meets Serenity</i>

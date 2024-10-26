@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   decreaseItemQuantity,
@@ -41,10 +40,9 @@ const CartItem = ({ onContinueShopping, onRemoveItem }) => {
     dispatch(removeItem(item));
   };
 
-  // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
     const price = item.quantity * Number(item.cost.replace(/[^0-9.-]+/g, ""));
-    return price; // Return the calculated price
+    return price;
   };
 
   const handleCheckoutShopping = (e) => {

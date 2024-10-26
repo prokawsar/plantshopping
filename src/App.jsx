@@ -25,7 +25,7 @@ function App() {
             <p className="text-2xl">Where Green Meets Serenity</p>
 
             <button
-              className="py-4 text-xl px-6 bg-green-600 hover:bg-green-400 rounded-md flex items-center"
+              className="py-4 mt-5 text-xl px-6 bg-green-600 hover:bg-green-400 rounded-md flex items-center"
               onClick={handleGetStartedClick}
             >
               Get Started
