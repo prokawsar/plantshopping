@@ -1,1 +1,1 @@
-# coding-project-template
+# Plan Shopping by React
