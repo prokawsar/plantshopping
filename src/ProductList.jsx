@@ -148,6 +148,7 @@ function ProductList() {
         </div>
       ) : (
         <CartItem
+          totalItem={calculateTotalItems}
           onContinueShopping={handleContinueShopping}
           onRemoveItem={setAddedToCart}
         />

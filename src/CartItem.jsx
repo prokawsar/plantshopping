@@ -6,7 +6,7 @@ import {
 } from "./CartSlice";
 import "./assets/CartItem.css";
 
-const CartItem = ({ onContinueShopping, onRemoveItem }) => {
+const CartItem = ({ totalItem, onContinueShopping, onRemoveItem }) => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -54,6 +54,7 @@ const CartItem = ({ onContinueShopping, onRemoveItem }) => {
       <h2 style={{ color: "black" }}>
         Total Cart Amount: ${calculateTotalAmount()}
       </h2>
+      <h2 style={{ color: "black" }}>Total Item: {totalItem()}</h2>
       <div>
         {cart.map((item) => (
           <div className="cart-item" key={item.name}>
