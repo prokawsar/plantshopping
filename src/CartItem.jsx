@@ -7,7 +7,7 @@ import {
 } from "./CartSlice";
 import "./CartItem.css";
 
-const CartItem = ({ onContinueShopping }) => {
+const CartItem = ({ onContinueShopping, onRemoveItem }) => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -23,14 +23,21 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleIncrement = (item) => {
-    dispatch(increaseItemQuantity(item));
+    dispatch(increaseItemQuantity(item.name));
   };
 
   const handleDecrement = (item) => {
-    dispatch(decreaseItemQuantity(item));
+    dispatch(decreaseItemQuantity(item.name));
+    if (item.quantity == 1) {
+      handleRemove(item.name);
+    }
   };
 
   const handleRemove = (item) => {
+    onRemoveItem((prevState) => ({
+      ...prevState,
+      [item]: false,
+    }));
     dispatch(removeItem(item));
   };
 
@@ -59,7 +66,7 @@ const CartItem = ({ onContinueShopping }) => {
               <div className="cart-item-quantity">
                 <button
                   className="cart-item-button cart-item-button-dec"
-                  onClick={() => handleDecrement(item.name)}
+                  onClick={() => handleDecrement(item)}
                 >
                   -
                 </button>
@@ -68,7 +75,7 @@ const CartItem = ({ onContinueShopping }) => {
                 </span>
                 <button
                   className="cart-item-button cart-item-button-inc"
-                  onClick={() => handleIncrement(item.name)}
+                  onClick={() => handleIncrement(item)}
                 >
                   +
                 </button>

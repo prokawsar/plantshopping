@@ -118,8 +118,8 @@ function ProductList() {
       {!showCart ? (
         <div className="product-grid">
           {plantsArray.map((category, index) => (
-            <div key={index}>
-              <h1>
+            <div key={index} className="w-full">
+              <h1 className="text-2xl font-bold text-center underline py-3">
                 <div>{category.category}</div>
               </h1>
               <div className="product-list">
@@ -146,7 +146,10 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        <CartItem onContinueShopping={handleContinueShopping} />
+        <CartItem
+          onContinueShopping={handleContinueShopping}
+          onRemoveItem={setAddedToCart}
+        />
       )}
     </div>
   );
