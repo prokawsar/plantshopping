@@ -5,7 +5,7 @@ import {
   increaseItemQuantity,
   removeItem,
 } from "./CartSlice";
-import "./CartItem.css";
+import "./assets/CartItem.css";
 
 const CartItem = ({ onContinueShopping, onRemoveItem }) => {
   const cart = useSelector((state) => state.cart.items);

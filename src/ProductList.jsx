@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./ProductList.css";
+import "./assets/ProductList.css";
 import CartItem from "./CartItem";
 import { plantsArray } from "./utils/constant";
 import { addItem } from "./CartSlice";
@@ -29,8 +29,8 @@ function ProductList() {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "1100px",
   };
+
   const styleA = {
     color: "white",
     fontSize: "30px",
@@ -61,9 +61,12 @@ function ProductList() {
 
   return (
     <div>
-      <div className="navbar" style={styleObj}>
+      <div
+        className="navbar flex justify-between w-full flex-row"
+        style={styleObj}
+      >
         <div className="tag">
-          <div className="luxury">
+          <div className="items-center flex text-xl gap-2">
             <img
               src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png"
               alt=""
@@ -76,15 +79,14 @@ function ProductList() {
             </a>
           </div>
         </div>
+        <div>
+          <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>
+            Plants
+          </a>
+        </div>
+
         <div style={styleObjUl}>
           <div>
-            {" "}
-            <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>
-              Plants
-            </a>
-          </div>
-          <div>
-            {" "}
             <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
               <h1 className="cart">
                 <span className="cart_quantity_count">
@@ -131,6 +133,7 @@ function ProductList() {
                       alt={plant.name}
                     />
                     <div className="product-title">{plant.name}</div>
+                    <p>{plant.cost}</p>
                     {/*Similarly like the above plant.name show other details like description and cost*/}
                     <button
                       disabled={addedToCart[plant.name]}
