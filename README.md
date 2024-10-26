@@ -1,1 +1,1 @@
-# Plan Shopping by React
+# Plant Shopping by React
