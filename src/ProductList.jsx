@@ -3,13 +3,18 @@ import "./ProductList.css";
 import CartItem from "./CartItem";
 import { plantsArray } from "./utils/constant";
 import { addItem } from "./CartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductList() {
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
+  const cart = useSelector((state) => state.cart.items);
+
   const dispatch = useDispatch();
+
+  const calculateTotalItems = () =>
+    cart.reduce((total, item) => total + item.quantity, 0);
 
   const styleObj = {
     backgroundColor: "#4CAF50",
@@ -82,6 +87,9 @@ function ProductList() {
             {" "}
             <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
               <h1 className="cart">
+                <span className="cart_quantity_count">
+                  {calculateTotalItems()}
+                </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 256 256"
