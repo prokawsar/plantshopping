@@ -23,6 +23,13 @@ const CartSlice = createSlice({
     clearCart(state) {
       state.items = [];
     },
+    updateQuantity(state, action) {
+      const { name, quantity } = action.payload;
+      const itemToUpdate = state.items.find((item) => item.name === name);
+      if (itemToUpdate) {
+        itemToUpdate.quantity = quantity;
+      }
+    },
     increaseItemQuantity(state, action) {
       const itemToIncrease = state.items.find(
         (item) => item.name === action.payload
@@ -46,6 +53,7 @@ export const {
   addItem,
   removeItem,
   clearCart,
+  updateQuantity,
   increaseItemQuantity,
   decreaseItemQuantity,
 } = CartSlice.actions;
